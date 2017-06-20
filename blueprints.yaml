@@ -1,0 +1,31 @@
+name: Bigfoot JS
+version: 0.1.0
+description: Loads the BigfootJS script (and jQuery if required) to enable better Footnotes.
+icon: plug
+author:
+  name: Craig Phillips
+  email: support@craigphillips.biz
+homepage: https://github.com/cppl/grav-plugin-bigfoot-js
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/cppl/grav-plugin-bigfoot-js/issues
+docs: https://github.com/cppl/grav-plugin-bigfoot-js/blob/develop/README.md
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+    text_var:
+      type: text
+      label: Text Variable
+      help: Text to add to the top of a page
