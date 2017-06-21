@@ -25,7 +25,14 @@ You should now have all the plugin files under
 > NOTE: This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav) and the [Error](https://github.com/getgrav/grav-plugin-error) and [Problems](https://github.com/getgrav/grav-plugin-problems) to operate.
 
 ## Configuration
+### Plugin settings
+From the plugins settings screen in the Grav Admin you can:
 
+- Enable/Disable the Bigfoot.js plugin
+- Enable/Disable autoloading of Bigfoot.js
+- Select from the 'Default', 'Number' or 'Bottom' style of footnotes
+
+### Manual Configuration
 Before configuring this plugin, you should copy the `user/plugins/bigfoot-js/bigfoot-js.yaml` to `user/config/plugins/bigfoot-js.yaml` and only edit that copy.
 
 Here is the default configuration and an explanation of available options can be found below:
@@ -34,6 +41,7 @@ Here is the default configuration and an explanation of available options can be
 enabled: true
 include_jquery: false
 auto_bigfootjs: true
+style: default
 ```
 
 ## Usage
