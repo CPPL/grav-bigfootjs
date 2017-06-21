@@ -54,8 +54,9 @@ class BigfootJSPlugin extends Plugin
     public function onPageContentRaw(Event $e)
     {
         // Get settings from the plugin configuration
-        $add_jQuery        = $this->config->get('include_jquery', false);
-        $autoAdd_BigfootJS = $this->config->get('auto_bigfootjs', true);
+        $add_jQuery        = $this->config->get('plugins.bigfoot-js.include_jquery', false);
+        $autoAdd_BigfootJS = $this->config->get('plugins.bigfoot-js.auto_bigfootjs', true);
+        $style             = $this->config->get('plugins.bigfoot-js.style', 'default');
 
         /** @var Assets $assets */
         $assets = $this->grav['assets'];
@@ -83,9 +84,10 @@ window.addEventListener('message', function (event) {
 });
 BFJS;
 
+            $stylesheet = "plugins://bigfoot-js/css/bigfoot-$style.css";
 
             $assets->addJs('plugins://bigfoot-js/js/bigfoot.js');
-            $assets->addCss('plugins://bigfoot-js/css/bigfoot.css');
+            $assets->addCss($stylesheet);
             $assets->addInlineJs($bf_init);
         }
     }
