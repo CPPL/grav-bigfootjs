@@ -1,5 +1,5 @@
 name: Bigfoot JS
-version: 0.1.3
+version: 0.1.4
 description: Loads the BigfootJS script (and jQuery if required) to enable better Footnotes.
 icon: plug
 author:
@@ -36,6 +36,16 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+    style:
+      type: select
+      label: PLUGIN_BIGFOOTJS.STYLE
+      size: medium
+      default: 'default'
+      options:
+        'default': PLUGIN_BIGFOOTJS.STYLE_DEFAULT
+        'number':  PLUGIN_BIGFOOTJS.STYLE_NUMBER
+        'bottom':  PLUGIN_BIGFOOTJS.STYLE_BOTTOM
+
     include_jquery:
       type: toggle
       label: PLUGIN_BIGFOOTJS.INCLUDE_JQUERY
