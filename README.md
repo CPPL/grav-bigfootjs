@@ -1,7 +1,5 @@
 # Bigfoot.js Plugin
 
-**This README.md file should be modified to describe the features, installation, configuration, and general usage of this plugin.**
-
 The **Bigfoot.js** Plugin is for [Grav CMS](http://github.com/getgrav/grav). Loads the Bigfoot.js script (and jQuery if required) to enable better Footnotes.
 
 ## Installation
@@ -23,7 +21,7 @@ To install this plugin, just download the zip version of this repository and unz
 You should now have all the plugin files under
 
     /your/site/grav/user/plugins/bigfoot-js
-	
+
 > NOTE: This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav) and the [Error](https://github.com/getgrav/grav-plugin-error) and [Problems](https://github.com/getgrav/grav-plugin-problems) to operate.
 
 ## Configuration
@@ -89,11 +87,10 @@ Footnotes can contain a reasonable range of content and like any good footnote s
 
 ## Credits
 
-**Of course this wouldn't be possible without [Bigfoot.js](http://www.bigfootjs.com) and [Markdown Extra](https://michelf.ca/projects/php-markdown/extra/), all my efforts are trivial by comparison.**
+Of course this wouldn't be possible without [Bigfoot.js](http://www.bigfootjs.com) and [Markdown Extra](https://michelf.ca/projects/php-markdown/extra/), all my efforts are trivial by comparison.
 
 ## To Do
 
  * settings for controlling the footnote mark option (right now its the default elipses [^3], soon you have numbers available as well)
  * the ability to add your own CSS styling to your theme for automatic overriding of the default style
  * and controls for changing the other options in Bigfoot.js
-

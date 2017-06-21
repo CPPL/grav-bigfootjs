@@ -1,3 +1,9 @@
+# v0.1.3
+##  06/21/2017
+
+1. [](#improved)
+    * More cleanup of README
+
 # v0.1.2
 ##  06/21/2017
 
@@ -15,4 +21,3 @@
 
 1. [](#new)
     * ChangeLog started...
-
