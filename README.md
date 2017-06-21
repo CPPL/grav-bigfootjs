@@ -1,8 +1,8 @@
-# Bigfoot Js Plugin
+# Bigfoot.js Plugin
 
 **This README.md file should be modified to describe the features, installation, configuration, and general usage of this plugin.**
 
-The **Bigfoot Js** Plugin is for [Grav CMS](http://github.com/getgrav/grav). Loads the BigfootJS script (and jQuery if required) to enable better Footnotes.
+The **Bigfoot.js** Plugin is for [Grav CMS](http://github.com/getgrav/grav). Loads the Bigfoot.js script (and jQuery if required) to enable better Footnotes.
 
 ## Installation
 
@@ -10,7 +10,7 @@ Installing the Bigfoot Js plugin can be done in one of two ways. The GPM (Grav P
 
 ### GPM Installation (Preferred)
 
-The simplest way to install this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's terminal (also called the command line).  From the root of your Grav install type:
+The simplest way to install this plugin will be via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's terminal (also called the command line). *Currently the plugin isn't available through GPM so you the manual option will have to be used in the short term.*  From the root of your Grav install type:
 
     bin/gpm install bigfoot-js
 
