@@ -1,6 +1,8 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Assets;
+use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
 
@@ -51,13 +53,55 @@ class BigfootJSPlugin extends Plugin
      */
     public function onPageContentRaw(Event $e)
     {
-        // Get a variable from the plugin configuration
-        $text = $this->grav['config']->get('plugins.bigfoot-js.text_var');
+        // Get settings from the plugin configuration
+        $add_jQuery        = $this->config->get('include_jquery', false);
+        $autoAdd_BigfootJS = $this->config->get('auto_bigfootjs', true);
 
-        // Get the current raw content
+        /** @var Assets $assets */
+        $assets = $this->grav['assets'];
+
+        // Check for Footnotes
+        $pmResult = $this->checkForFootnotes($e);
+        if ($pmResult == false || $pmResult === 0) return;
+
+        // Do we need to add jQuery?
+        if ($add_jQuery) {
+            /** @var Page $page */
+            $page = $e['page'];
+            $assets->addJs('jquery');
+        }
+
+        // Now do we add BigfootJS
+        if ($autoAdd_BigfootJS) {
+            // Build our inline JS block to initialise BigfootJS
+            $bf_init = <<<BFJS
+var bigfoot = $.bigfoot()
+
+window.addEventListener('message', function (event) {
+    $('body').attr('data-footnote-style', event.data);
+    bigfoot.updateSetting('positionContent', event.data !== 'bottom');
+});
+BFJS;
+
+
+            $assets->addJs('plugins://bigfoot-js/js/bigfoot.js');
+            $assets->addCss('plugins://bigfoot-js/css/bigfoot.css');
+            $assets->addInlineJs($bf_init);
+        }
+    }
+
+    /**
+     * @param Event $e
+     * @return int
+     */
+    protected function checkForFootnotes(Event $e)
+    {
+// Get the current raw content
         $content = $e['page']->getRawContent();
 
-        // Prepend the output with the custom text and set back on the page
-        $e['page']->setRawContent($text . "\n\n" . $content);
+        // Check for Markdown Footnotes
+        $footnoteMatches = [];
+        $pmResult = preg_match('/\[\^\d+\]?/', $content, $footnoteMatches);
+        return $pmResult;
     }
 }

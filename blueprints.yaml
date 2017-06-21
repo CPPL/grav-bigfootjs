@@ -5,11 +5,11 @@ icon: plug
 author:
   name: Craig Phillips
   email: support@craigphillips.biz
-homepage: https://github.com/cppl/grav-plugin-bigfoot-js
-demo: http://demo.yoursite.com
+homepage: https://github.com/CPPL/grav-bigfootjs
+demo: http://thesumof.it/blog/2017-06-21-bigfootjs-for-grav
 keywords: grav, plugin, etc
-bugs: https://github.com/cppl/grav-plugin-bigfoot-js/issues
-docs: https://github.com/cppl/grav-plugin-bigfoot-js/blob/develop/README.md
+bugs: https://github.com/CPPL/grav-bigfootjs/issues
+docs: https://github.com/CPPL/grav-bigfootjs/blob/develop/README.md
 license: MIT
 
 form:
@@ -17,15 +17,33 @@ form:
   fields:
     enabled:
       type: toggle
-      label: Plugin status
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
       highlight: 1
       default: 0
       options:
-        1: Enabled
-        0: Disabled
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    text_var:
-      type: text
-      label: Text Variable
-      help: Text to add to the top of a page
+    auto_bigfootjs:
+      type: toggle
+      label: PLUGIN_BIGFOOTJS.AUTO
+      help: PLUGIN_BIGFOOTJS.AUTO_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    include_jquery:
+      type: toggle
+      label: PLUGIN_BIGFOOTJS.INCLUDE_JQUERY
+      help: PLUGIN_BIGFOOTJS.INCLUDE_JQUERY_HELP
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
