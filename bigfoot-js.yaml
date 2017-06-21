@@ -1,1 +1,3 @@
 enabled: true
+include_jquery: false
+auto_bigfootjs: true
