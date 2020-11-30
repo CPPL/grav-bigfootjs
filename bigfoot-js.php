@@ -53,10 +53,21 @@ class BigfootJSPlugin extends Plugin
      */
     public function onPageContentRaw(Event $e)
     {
+        $settings = $this->config->get('plugins.bigfoot-js', []);
+        if(!empty($settings['enabled'])) { unset($settings['enabled']); }
+
+
         // Get settings from the plugin configuration
-        $add_jQuery        = $this->config->get('plugins.bigfoot-js.include_jquery', false);
-        $autoAdd_BigfootJS = $this->config->get('plugins.bigfoot-js.auto_bigfootjs', true);
-        $style             = $this->config->get('plugins.bigfoot-js.style', 'default');
+        $include_jquery = false;
+        $auto_bigfootjs = true;
+        $style = 'default';
+
+        foreach(['include_jquery', 'auto_bigfootjs', 'style'] as $key) {
+            if($settings[$key] !== null) {
+                ${$key} = $settings[$key];
+                unset($settings[$key]);
+            }
+        }
 
         /** @var Assets $assets */
         $assets = $this->grav['assets'];
@@ -66,17 +77,17 @@ class BigfootJSPlugin extends Plugin
         if ($pmResult == false || $pmResult === 0) return;
 
         // Do we need to add jQuery?
-        if ($add_jQuery) {
+        if ($include_jquery) {
             /** @var Page $page */
             $page = $e['page'];
             $assets->addJs('jquery');
         }
 
         // Now do we add BigfootJS
-        if ($autoAdd_BigfootJS) {
+        if ($auto_bigfootjs) {
             // Build our inline JS block to initialise BigfootJS
             $bf_init = <<<BFJS
-var bigfoot = $.bigfoot()
+var bigfoot = $.bigfoot(%s)
 
 window.addEventListener('message', function (event) {
     $('body').attr('data-footnote-style', event.data);
@@ -88,7 +99,7 @@ BFJS;
 
             $assets->addJs('plugins://bigfoot-js/js/bigfoot.js');
             $assets->addCss($stylesheet);
-            $assets->addInlineJs($bf_init);
+            $assets->addInlineJs(sprintf($bf_init,json_encode($settings)));
         }
     }
 
